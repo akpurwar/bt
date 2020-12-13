@@ -1,0 +1,62 @@
+<form>
+    <div *ngFor="let i of QuestionList; let ind = index ">
+
+        <span>{{i.question}}</span>
+
+
+        <div *ngIf="i.typeId == '1'">
+            <div class="form-check-inline">
+                <label class="form-check-label" for="radio1">
+                    <input type="radio" name={{i.questionId}} id="option1"
+                        (click)="question(i.questionId,i.option1,ind)" [checked]="i.option1 == i.selectedOption"
+                        [disabled]="i.found"  >{{i.option1}} 
+
+                        
+                               
+                </label>
+                
+            </div>
+
+            
+            <div class="form-check-inline">
+                <label class="form-check-label" for="radio2">
+                    <input type="radio" name={{i.questionId}} id="option2" [disabled]="i.found"
+                        (click)="question(i.questionId,i.option2,ind)"
+                        [checked]="i.option2 == i.selectedOption">{{i.option2}}
+                </label>
+            </div>
+            <div class="form-check-inline">
+                <label class="form-check-label" for="radio3">
+                    <input type="radio" name={{i.questionId}} id="option3" [disabled]="i.found"
+                        (click)="question(i.questionId,i.option3,ind)"
+                        [checked]="i.option3 == i.selectedOption">{{i.option3}}
+                </label>
+            </div>
+            <div class="form-check-inline">
+                <label class="form-check-label" for="radio4">
+                    <input type="radio" name={{i.questionId}} id="option4" [disabled]="i.found"
+                        (click)="question(i.questionId,i.option4,ind)"
+                        [checked]="i.option4 == i.selectedOption">{{i.option4}}
+                </label>
+            </div>
+        </div>
+  Your Answer: {{i.selectedOption}}
+  Correct Answer : {{i.CorrectOption}}
+ 
+
+        <!-- <div *ngIf="i.typeId == '2'">
+            <input type="radio" name="option" id="option1" (click)="question(i.questionId,i.option1)">{{i.option1}}
+            <input type="radio" name="option" id="option2" (click)="question(i.questionId,i.option2)">{{i.option2}}
+        </div> -->
+
+        <!-- <div *ngIf="i.typeId == '3'">
+            <input type="text" name="option">
+        </div> -->
+
+    </div>
+    <!-- Time-Elapsed : {{displayTimeElapsed()}} -->
+     <!-- Time : {{timer[0].duration}} -->
+
+    <button type="submit" class="btn btn-info">Submit</button>
+</form>
+<!-- {{counter | formattime}} -->

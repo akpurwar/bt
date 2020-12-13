@@ -1,0 +1,13 @@
+
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+     
+      <ul class="nav navbar-nav">
+       
+        <li *ngFor="let i of categoryName;" value="{{i.categoryName}}"><a href="#" routerLink="/catList/{{i.categoryId}}">{{ i.categoryName}}</a></li>
+       
+      </ul>
+    </div>
+  </nav>
+

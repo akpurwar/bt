@@ -1,0 +1,125 @@
+<h3>Add Question</h3>
+<div [hidden]="submitted">
+    <form #addQuestionForm="ngForm">
+
+      <div class="form-group">
+        <label for="categories">Categories </label>
+        <select class="custom-select col-md-4" name="categoryName"  [(ngModel)]="questions.categoryName">
+          <option *ngFor="let category of categoryName;" value="{{category.categoryName}}" >{{ category.categoryName}}</option>
+        </select>
+     </div> 
+
+     <div class="form-group">
+      <label for="level">Quiz Name </label>
+        <select class="custom-select col-md-4" name="quizName" [(ngModel)]="questions.quizName">
+            <option *ngFor="let level of quizName;" value="{{level.quizName}}">{{ level.quizName}}</option>
+        </select>
+     </div> 
+
+     <div class="form-group">
+      <label for="question">Question </label>
+      <input type="text" class="form-control col-md-4" id="question" placeholder="question" 
+      required
+      [(ngModel)]="questions.question" name="question" #question="ngModel">
+      <div [hidden]="question.valid || question.pristine"
+           class="alert alert-danger">
+           Question  is required
+      </div>
+    </div>
+
+     <div class="form-group">
+      <label for="level">Select Type </label>
+        <select class="custom-select col-md-4" name="typeName"  [(ngModel)]="questions.typeName">
+            <option *ngFor="let type of typeName;" value="{{type.typeName}}">{{ type.typeName}}</option>
+        </select>
+     </div> 
+
+     <div *ngIf="questions.typeName == 'mcq'" > 
+      
+      <div class="form-group">
+        <input type="radio"  [(ngModel)]="questions.answer" value="{{questions.option1}}" name="option">
+        <!-- <label for="option1">Option 1</label> -->
+        <input type="text" class="form-control col-md-4" id="option1" placeholder="option1"
+        required
+        [(ngModel)]="questions.option1" name="option1" #option1="ngModel">
+        <div [hidden]="option1.valid || option1.pristine"
+             class="alert alert-danger">
+             option1 is required
+        </div>
+      </div>
+      
+
+      <input type="radio"  [(ngModel)]="questions.answer" value="{{questions.option2}}" name="option">
+      <div class="form-group">
+        <!-- <label for="option2">Option 2</label> -->
+        <input type="text" class="form-control col-md-4" id="option2" placeholder="option2"
+        required
+        [(ngModel)]="questions.option2" name="option2" #option2="ngModel">
+        <div [hidden]="option2.valid || option2.pristine"
+             class="alert alert-danger">
+             option2 is required
+        </div>
+      </div>
+
+      <input type="radio"  [(ngModel)]="questions.answer" value="{{questions.option3}}" name="option">
+      <div class="form-group">
+        <!-- <label for="option3">Option 3</label> -->
+        <input type="text" class="form-control col-md-4" id="option3" placeholder="option3"
+        required
+        [(ngModel)]="questions.option3" name="option3" #option3="ngModel">
+        <div [hidden]="option3.valid || option3.pristine"
+             class="alert alert-danger">
+             option3 is required
+        </div>
+      </div>
+
+      <input type="radio"  [(ngModel)]="questions.answer" value="{{questions.option4}}" name="option">
+      <div class="form-group">
+        <!-- <label for="option4">Option 4</label> -->
+        <input type="text" class="form-control col-md-4" id="option4" placeholder="option4"
+        required
+        [(ngModel)]="questions.option4" name="option4" #option4="ngModel">
+        <div [hidden]="option4.valid || option4.pristine"
+             class="alert alert-danger">
+             option4 is required
+        </div>
+      </div>
+     </div>
+
+     <div *ngIf="questions.typeName == 'descriptive'">
+       <input type="radio" [(ngModel)]="questions.answer" value="{{questions.option1}}" name="option">
+      <textarea [(ngModel)]="questions.option1" name="res"></textarea>
+    </div>
+
+     <div *ngIf="questions.typeName == 'true-false'" > 
+      
+      <div class="form-group">
+        <input type="radio" [(ngModel)]="questions.answer" id="option1" value="{{questions.option1}}" name="option">
+        <input type="text" class="form-control col-md-4" id="option1" placeholder="option1"
+        required
+        [(ngModel)]="questions.option1" name="option1" #option1="ngModel">
+        <div [hidden]="option1.valid || option1.pristine"
+             class="alert alert-danger">
+             option1 is required
+        </div>
+      </div>
+      
+      <div class="form-group">
+      <input type="radio"  [(ngModel)]="questions.answer" id="option2" value="{{questions.option2}}" name="option">
+        <input type="text" class="form-control col-md-4" id="option2" placeholder="option2"
+        required
+        [(ngModel)]="questions.option2" name="option2" #option2="ngModel">
+        <div [hidden]="option2.valid || option2.pristine"
+             class="alert alert-danger">
+             option2 is required
+        </div>
+      </div>
+     </div>
+      
+      <div class="btn-group btn-group-md">
+        <!-- <button type="button" class="btn btn-dark" (click)="goBack()">Back</button> -->
+        <button type="button" class="btn btn-primary" (click)="addQuestion()" 
+        [disabled]="!addQuestionForm.form.valid">Add</button>
+      </div>
+    </form>
+</div>
